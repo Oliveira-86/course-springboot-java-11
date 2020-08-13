@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity //Anotações para que o JPA converta os obj em modelo relacional
-public class User implements Serializable {  //Serializable, no java foi definido para que seus objetos sejam transformados em cadeias de bite para que o obj trafegue na rede, gravado em arquivos e etc..  
+@Entity 
+public class User implements Serializable {  
 	
 	private static final long serialVersionUID = 1L;
 
-	@Id //Informa ao JPA o atributo que é a chave primária da tabela do banco de dados
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //informa ao JPA que é uma chave numérica então ela vai ser auto incrementada no banco de dados
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	private String name;
 	private String email;
@@ -97,3 +97,12 @@ public class User implements Serializable {  //Serializable, no java foi definid
 		return true;
 	}
 }
+
+
+/*
+ * Serializable, no java foi definido para que seus objetos sejam transformados em cadeias de bite para que o obj trafegue na rede, gravado em arquivos e etc..
+ * @Entity //Anotações para que o JPA converta os obj em modelo relacional
+ * @Id //Informa ao JPA o atributo que é a chave primária da tabela do banco de dados
+ * @GeneratedValue(strategy = GenerationType.IDENTITY) //informa ao JPA que é uma chave numérica então ela vai ser auto incrementada no banco de dados
+ */
+
