@@ -45,7 +45,7 @@ public class TestConfig implements CommandLineRunner {
  * @Profile("test") --> indica a class que é um configuração específica pra test;
  * A classe de config serve temporariamente para o data base seeding, ou seja, é pra ppopular o banco de dados com alguns obj  e para acessar e depositar dados a classe que faz isso é o Repository, então nesse momento tem primeiro caso de injeçao de dependência;
  * Em POO qnd um serviço depende do outro essa dependência tem que ser fraca, desacoplada(manualmente por construtor, método set e etc..);
- * O framework tem um mecanismo de dependência implícito é automático, no spring declaramos a dependência com atributo e para que o spring consiga resolver essa dependência e associar a instância do UserRepository no testConfig devemos colocar o anotation "@Autowired" 
+ * O framework tem um mecanismo de dependência implícito é automático, no spring declaramos a dependência com atributo e para que o spring consiga resolver essa dependência e associar a instância do UserRepository no testConfig devemos colocar o annotation "@Autowired" 
  * Ao implementar o "CommandLineRunner" exucuta tud que estiver em seu metoo quando o programa for iniciado;
  * Para salvar os obj no BD em forma de lista usamos "userRepository.saveAll(Arrays.asList(u1, u2));";
  *   
