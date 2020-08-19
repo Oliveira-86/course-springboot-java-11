@@ -40,8 +40,8 @@ public class UserResource {
  * @RestController - Essa classe é um recurso web que é implementado por um controlador rest;
  * @RequestMapping(value = "/users") --> Determina o caminho para o recurso, um "nome";
  * @GetMapping --> metodo que é um end point para acessar os usuários;
- * Necessário cria um dependência para o Service;
+ * @Autowride --> Necessário cria um dependência para o Service;
  * @GetMapping(value = "/{id}") --> passar o valor da url e que a requisição seja aceita;
- * @PathVariable --> Annotation, serve para que o spring aceite o parametro(id) e considera-lo para chear ate url "/{id}"	
+ * @PathVariable --> Annotation, serve para que o spring aceite o parametro(id) e considera-lo para chegar ate url "/{id}"	
  */
 
