@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "tb_order")
 public class Order {
@@ -17,6 +19,8 @@ public class Order {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long Id;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
 	@ManyToOne
@@ -94,5 +98,7 @@ public class Order {
 /*@ManyToOne --> Annotation que serve para instruir o JPA que transforma em um chave estrangeira;
  * @JoinColumn(name = "client_id") --> Nome da chave estrangeira;
  * @Table(name = "tb_order") --> Para que nao haja conflito com as palavras reservadas pelo SQL;
+ * Lazy loading é qudno vc em uma assciano "To many" o JPA não carrega os obj para muito, isso para nao estoura o trafico de memoria o computador;
+ * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") --> Annotation para garantir que o json vai mostra no formato de string do ISO 8601
  */
 
