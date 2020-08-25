@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity 
 @Table(name = "tb_product")
@@ -25,7 +27,8 @@ public class Product implements Serializable {
 	private Double price;
 	private String imgUrl;
 	
-	@Transient
+	@ManyToMany
+	@JoinTable(name = "tb_product_categoy", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "categoy_id"))
 	private Set<Category> categories = new HashSet<>();
 	
 	public Product() {
@@ -119,4 +122,9 @@ public class Product implements Serializable {
  * Usamos o HashSet ao inves do Set para instanciar, é pq o Set é uma interface, ele não pode ser instanciado, entao devemos usar um classe(HashSet) que represente essa interface;
  * 
  *No construtor não é necessário colocar a coleção(category) pq ela já foi instanciada anteriomente; 
+ *
+ *@JoinTable --> Existe  objetos associados entre si no modelo de dados do paradigma orietado a objetos. No Banco de Dados relacional a associação(@ManyToMany) dos produtos com a categoria(exemplo),  precisa existir uma tabela de associação e para isso é necessário mapear as classes para a tabela de associação no BD relacional.
+ *
+ *joincolumns e o inverseJoinColumns --> São necessários pq é associação entre duas tabelas
+ *
  */     
