@@ -32,9 +32,13 @@ public class OrderService {
  * carregado com regras de negócio, então serve para separar as
  * responsabilidades; O controlador fica fazendo apenas o "meio de campo" entre
  * as interações do usuário na aplicação e as regras de negócio, ou seja, o
- * contralador fica mais enxuto; Tem algumas desvantagens, exemplo: tem algumas
+ * contralador fica mais enxuto; 
+ * 
+ * Tem algumas desvantagens, exemplo: tem algumas 
  * operações onde a camada de serviço vai repassar apenas algumas chamadas do
- * controlador("recuperar um usuário por Id"); Para realizar um operação de
+ * controlador("recuperar um usuário por Id"); 
+ * 
+ * Para realizar um operação de
  * busca de todos usuários ou por Id deve usar a dependencia do Repository;
  * 
  * Component registration --> Para injeta a depedência de uma classe ela precisa
