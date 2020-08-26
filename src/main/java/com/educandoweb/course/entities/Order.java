@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,9 @@ public class Order implements Serializable {
 	
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
+	
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	private Payment payment;
 	
 	public Order() {
 	}
@@ -87,6 +92,14 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 	public Set<OrderItem> getItens(){
 		return items;
 	}
@@ -129,6 +142,10 @@ public class Order implements Serializable {
  * @JoinColumn(name = "client_id") --> Nome da chave estrangeira;
  * @Table(name = "tb_order") --> Para que nao haja conflito com as palavras reservadas pelo SQL;
  * Lazy loading é qudno vc em uma assciano "To many" o JPA não carrega os obj para muito, isso para nao estoura o trafico de memoria o computador;
- * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") --> Annotation para garantir que o json vai mostra no formato de string do ISO 8601
+ * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") --> Annotation para garantir que o json vai mostra no formato de string do ISO 8601;
+ * 
+ * cascade = CascadeType.ALL --> Mapeamento para que as duas entidades(OneToOne) para terem o mesmo Id;
+ *
+ * 
  */
 
