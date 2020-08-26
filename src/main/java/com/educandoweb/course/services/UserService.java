@@ -31,6 +31,21 @@ public class UserService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public User upDate(Long id, User obj) {
+		User entity = repository.getOne(id);
+		upDateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void upDateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+		
+	}
+
+	
 }
 
 
@@ -54,5 +69,7 @@ public class UserService {
  * 
  * Component registration --> Para injeta a depedência de uma classe ela precisa estar registrada no mecanismo de injeçao de dependencia do framework;
  * 
- * @Service --> Para essa que essa classe(UserService) funcione na UserResource ela tem que se registrar no componente do spring precisamos registrar essa annotation;  
+ * @Service --> Para essa que essa classe(UserService) funcione na UserResource ela tem que se registrar no componente do spring precisamos registrar essa annotation; 
+ * 
+ *  getOne(id) --> Deixa um obleto monitorado pelo JPA para podermos trabalhar com ele e em seguida possa efetuar alguma operação com banco de dados, deferentemente do "findById()" que trabalha diretamente com o BD e atras o obj. 
  */
