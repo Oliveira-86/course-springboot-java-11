@@ -87,7 +87,7 @@ A classe de config serve temporariamente para o data base seeding, ou seja, é p
 Para acessar e depositar dados a classe que faz isso é o Repository, então nesse momento tem primeiro caso de injeçao de dependência.
 
 #### Conclusão
-Nesse projeto o foco foi a realização de os práticas de engenharia de software no backend com desenvolvimento em camadas(serviço, repository e domínio) com os controladores REST API.  
+Nesse projeto o foco foi a realização de boas práticas de engenharia de software no backend com desenvolvimento em camadas(serviço, repository e domínio) com os controladores REST API e os tratamentos de exceções.  
 
 ### End
  
